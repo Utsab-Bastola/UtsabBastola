@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utsab Bastola's Website</title>
+    <style>
+        /* General Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0; /* Light gray background */
+            color: #495057;
+            overflow: hidden; /* Prevent scrolling */
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        /* Navbar Styles */
+        .navbar {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 15px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+        }
+        .navbar ul {
+            display: flex;
+            list-style: none;
+        }
+        .navbar li {
+            margin: 0 20px;
+        }
+        .navbar a {
+            color: #ffffff;
+            font-size: 1.1em;
+            padding: 5px 10px;
+            transition: background-color 0.3s;
+        }
+        .navbar a:hover {
+            background-color: #ffc107;
+            color: #212529;
+            border-radius: 5px;
+        }
+        /* Section Styles */
+        section {
+            padding: 100px 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh; /* Full viewport height */
+        }
+        /* Home Section */
+        .home {
+            background-color: #007BFF;
+            color: #ffffff;
+            flex-direction: column;
+        }
+        .home h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+        .home p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+        .cta-button {
+            background-color: #ffc107;
+            color: #212529;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #e0a800;
+        }
+        /* About Section */
+        .about {
+            background-color: #ffffff;
+            color: #212529;
+            padding: 50px 20px;
+        }
+        .about-content {
+            background-color: #d3d3d3;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: auto;
+        }
+        .about h2 {
+            font-size: 2.3em;
+            margin-bottom: 30px;
+            color: #00aaff;
+            text-decoration: underline;
+        }
+        .about p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        /* Services Section */
+        .services {
+            background-color: #a9a9a9;
+            color: #212529;
+            padding: 50px 20px;
+        }
+        .services h2 {
+            font-size: 3em;
+            margin-left: 65px;
+            color: #4169e1;
+            text-decoration: underline;
+        }
+        .service-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .service-card {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            width: 250px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        .service-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+        .service-card p {
+            font-size: 1em;
+            line-height: 1.6;
+        }
+        /* Contact Section */
+        .contact {
+            background-color: #ffffff;
+            color: #212529;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 20px;
+            min-height: 80vh;
+            gap: 40px;
+        }
+        .contact .social-media {
+            flex: 1;
+            max-width: 300px;
+        }
+        .contact .social-media h2 {
+            font-size: 2.3em;
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+        .contact .social-media a {
+            display: block;
+            margin-bottom: 15px;
+            color: #ffc107; /* Yellow color */
+            font-size: 1.2em;
+            text-decoration: underline; /* Underline added */
+            transition: color 0.3s;
+        }
+        .contact .social-media a:hover {
+            color: #ffca28;
+        }
+        .contact form {
+            flex: 2;
+            max-width: 600px;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .contact form label {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            display: block;
+            text-align: left;
+        }
+        .contact form input,
+        .contact form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 1em;
+            resize: none;
+        }
+        .contact form button {
+            background-color: #007BFF;
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact form button:hover {
+            background-color: #0056b3;
+        }
+        /* Footer */
+        footer {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar ul {
+                flex-direction: column;
+            }
+            .navbar li {
+                margin: 10px 0;
+            }
+            section {
+                padding: 100px 20px;
+            }
+            .home h1 {
+                font-size: 2.5em;
+            }
+            .home p {
+                font-size: 1.2em;
+            }
+            .about h2,
+            .services h2,
+            .contact h2 {
+                font-size: 2em;
+            }
+            .service-card {
+                width: 100%;
+                max-width: 400px;
+            }
+            .contact {
+                flex-direction: column;
+                align-items: center;
+            }
+            .contact .social-media {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            .contact form {
+                margin-left: 0;
+            }
+        }
+        @media (max-width: 480px) {
+            .home h1 {
+                font-size: 2em;
+            }
+            .home p {
+                font-size: 1em;
+            }
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact Me</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="home">
+        <h1>Welcome to My Personal Website</h1>
+        <p>Hi, I’m Utsab Bastola, a passionate web developer from Nepal. Explore my work and feel free to connect with me.</p>
+        <button class="cta-button" onclick="window.location.href='#contact'">Get Started</button>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <h2>About Me</h2>
+            <p>Hi, I’m Utsab Bastola, a 14-year-old prodigy from Nepal with a passion for exploring new technologies and solving complex problems. As a dedicated atheist, I value rational thinking and evidence-based reasoning, which also influences my approach to coding and learning. When I’m not working on my latest web development projects, you can find me immersed in a game of chess. I enjoy the strategic depth and mental challenge that chess offers, and it’s a great way to enhance my problem-solving skills. I’m always eager to learn and grow, both as a developer and as an individual. If you’re interested in collaborating or just want to chat about web development, chess, or anything else, feel free to reach out!</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2>Services</h2>
+        <div class="service-cards">
+            <div class="service-card">
+                <h3>Web Development</h3>
+                <p>Building responsive, user-friendly websites and applications tailored to your needs.</p>
+            </div>
+            <div class="service-card">
+                <h3>Chess Coaching</h3>
+                <p>Offering chess coaching to help you improve your game and strategic thinking.</p>
+            </div>
+            <div class="service-card">
+                <h3>SEO Optimization</h3>
+                <p>Improving your website's visibility on search engines to attract more visitors.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="social-media">
+            <h2>Connect With Me</h2>
+            <a href="https://www.facebook.com/profile.php?id=61559882263986" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com/utsabbastola1018/" target="_blank">Instagram</a>
+            <a href="https://x.com/utsab_bastola" target="_blank">X (Twitter)</a>
+        </div>
+        <form>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Utsab Bastola. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
